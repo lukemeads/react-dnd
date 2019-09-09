@@ -168,6 +168,7 @@ export default function decorateHandler<Props, CollectedProps, ItemIdType>({
 			this.disposable.dispose()
 			if (this.handlerConnector) {
 				this.handlerConnector.receiveHandlerId(null)
+				this.handlerConnector.dispose()
 			}
 		}
 
@@ -185,8 +186,8 @@ export default function decorateHandler<Props, CollectedProps, ItemIdType>({
 				invariant(
 					isPlainObject(nextState),
 					'Expected `collect` specified as the second argument to ' +
-						'%s for %s to return a plain object of props to inject. ' +
-						'Instead, received %s.',
+					'%s for %s to return a plain object of props to inject. ' +
+					'Instead, received %s.',
 					containerDisplayName,
 					displayName,
 					nextState,
@@ -225,8 +226,8 @@ export default function decorateHandler<Props, CollectedProps, ItemIdType>({
 			invariant(
 				dragDropManager !== undefined,
 				'Could not find the drag and drop manager in the context of %s. ' +
-					'Make sure to render a DndProvider component in your top-level component. ' +
-					'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context',
+				'Make sure to render a DndProvider component in your top-level component. ' +
+				'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context',
 				displayName,
 				displayName,
 			)

@@ -10,6 +10,7 @@ export interface Connector {
 	connectTarget: any
 	receiveHandlerId(handlerId: Identifier | null): void
 	reconnect(): void
+	dispose(): void
 }
 
 export class SourceConnector implements Connector {
@@ -95,6 +96,14 @@ export class SourceConnector implements Connector {
 	public reconnect() {
 		this.reconnectDragSource()
 		this.reconnectDragPreview()
+	}
+
+	public dispose() {
+		this.lastConnectedDragPreview = null
+		this.lastConnectedDragPreviewOptions = null
+		this.lastConnectedDragSource = null
+		this.lastConnectedDragSourceOptions = null
+		this.lastConnectedHandlerId = null
 	}
 
 	private reconnectDragSource() {
