@@ -81,6 +81,12 @@ export class TargetConnector implements Connector {
 		this.reconnect()
 	}
 
+	public dispose() {
+		this.lastConnectedHandlerId = null
+		this.lastConnectedDropTarget = null
+		this.lastConnectedDropTargetOptions = null
+	}
+
 	public get dropTargetOptions() {
 		return this.dropTargetOptionsInternal
 	}
